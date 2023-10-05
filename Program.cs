@@ -1,4 +1,4 @@
-global using spendmanagement_mail_service.Services.EmailService;
+using spendmanagement_mail_service.Services.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
