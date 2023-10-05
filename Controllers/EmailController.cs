@@ -18,8 +18,16 @@ namespace spendmanagement_mail_service.Controllers
         [HttpPost]
         public IActionResult SendEmail(Email request)
         {
-           _emailService.SendEmail(request);
-            return Ok();
+            try
+            {
+                _emailService.SendEmail(request);
+                return Ok();
+            }
+            
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Ocorreu um erro ao enviar seu e-mail!.");    
+            }
         }
     }
 }
