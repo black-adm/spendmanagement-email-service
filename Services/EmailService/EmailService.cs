@@ -3,28 +3,31 @@ using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.Extensions.Configuration;
 
-namespace spendmanagement_mail_service.Services.EmailService;
-
-public class EmailService : IEmailService
+namespace spendmanagement_mail_service.Services.EmailService
 {
-    private readonly IConfiguration _config;
-    public EmailService(IConfiguration config)
+    public class EmailService : IEmailService
     {
-        _config = config;
-    }
-    public void SendEmail(Email request)
-    {
-        var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse("adrien.rutherford25@ethereal.email"));
-        email.To.Add(MailboxAddress.Parse(request.To));
-        email.Subject = request.Subject;
-        email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
+        private readonly IConfiguration _config;
+        public EmailService(IConfiguration config)
+        {
+            _config = config;
+        }
 
-        using var smtp = new SmtpClient();
-        smtp.Connect(_config.GetSection("SmtpHost").Value, 587, SecureSocketOptions.StartTls);
-        smtp.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
-        smtp.Send(email);
-        smtp.Disconnect(true);
+        public void SendEmail(Email request)
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_config["EmailSettings:From"]));
+            email.To.Add(MailboxAddress.Parse(request.To));
+            email.Subject = request.Subject;
+            email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(_config["Mailtrap:SmtpHost"], int.Parse(_config["Mailtrap:SmtpPort"]), SecureSocketOptions.StartTls);
+            smtp.Authenticate(_config["Mailtrap:SmtpUsername"], _config["Mailtrap:SmtpPassword"]);
+            smtp.Send(email);
+            smtp.Disconnect(true);
+        }
     }
 }

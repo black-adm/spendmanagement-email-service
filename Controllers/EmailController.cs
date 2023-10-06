@@ -4,7 +4,7 @@ using spendmanagement_mail_service.Services.EmailService;
 
 namespace spendmanagement_mail_service.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/api/[controller]")]
     [ApiController]
     public class EmailController : ControllerBase
     {
