@@ -1,5 +1,5 @@
 ### Micro-serviço de envio de emails
-# Spendmanagement Serviços de email
+# Spendmanagement serviço de email
 
 <p align="center">
 <img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white" />
