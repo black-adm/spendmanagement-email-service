@@ -29,5 +29,22 @@ namespace spendmanagement_mail_service.Controllers
                 return StatusCode(500, "Ocorreu um erro ao enviar seu e-mail!.");    
             }
         }
+
+        [HttpPost("subscribe")]
+        public IActionResult SendSubscribeEmail([FromBody] Email subscribe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var email = new Email
+            {
+                To = subscribe.To
+            };
+
+            _emailService.SendEmail(email);
+            return Ok("Email enviado com sucesso");
+        }
     }
 }
