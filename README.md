@@ -16,6 +16,7 @@ Agradeço desde já a oportunidade de participar e contribuir no projeto. Essa a
 Toda a arquitetura é feita em micro-serviços, no qual vocês podem visualizar o projeto no perfil do Felipe.
 
 Atualmente estou utilizando a *Api* do **Mailtrap**, a ideia é conseguir servir diversos provedores de email.
+
 <img src="https://i.ibb.co/QHhbhZ8/Captura-de-tela-de-2023-10-06-14-33-24.png" />
 </br>
 
