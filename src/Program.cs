@@ -1,4 +1,4 @@
-global using spendmanagement_mail_service.Services.EmailService;
+using SpendManagement.EmailService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,12 +10,8 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors(corsBuilder => corsBuilder
