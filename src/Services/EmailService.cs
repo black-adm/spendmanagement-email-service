@@ -2,7 +2,8 @@ using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using SpendManagement.EmailService.Model;
+using SpendManagement.Services.EmailServices;
+using SpendManagement.EmailService.Models;
 
 namespace SpendManagement.EmailService.Services
 {
