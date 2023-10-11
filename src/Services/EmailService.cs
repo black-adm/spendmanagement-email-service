@@ -1,11 +1,11 @@
-using spendmanagement_mail_service.Models;
 using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-using Microsoft.Extensions.Configuration;
+using SpendManagement.Services.EmailServices;
+using SpendManagement.EmailService.Models;
 
-namespace spendmanagement_mail_service.Services.EmailService
+namespace SpendManagement.EmailService.Services
 {
     public class EmailService : IEmailService
     {
